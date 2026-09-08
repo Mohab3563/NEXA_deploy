@@ -15,9 +15,11 @@ def _get_user_dir(user_id: str) -> str:
     """Resolves and creates the isolated directory path for a specific user's vectors."""
     clean_user_id = "".join(c for c in user_id if c.isalnum() or c in ("_", "-")) or "default_user"
     
-    # Resolves project root dynamically (assuming file is in app/rag/)
-    base_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-    user_dir = os.path.join(base_dir, "app", "knowledge", "vectors", clean_user_id)
+    # Resolves path accurately: app/rag/ -> app/ -> app/knowledge/vectors/
+    rag_dir = os.path.dirname(os.path.abspath(__file__)) # points to app/rag
+    app_dir = os.path.dirname(rag_dir)                   # points to app
+    
+    user_dir = os.path.join(app_dir, "knowledge", "vectors", clean_user_id)
     os.makedirs(user_dir, exist_ok=True)
     return user_dir
 
