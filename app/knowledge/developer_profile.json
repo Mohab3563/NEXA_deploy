@@ -1,0 +1,175 @@
+{
+  "name": "Mohab Mohamed Rabie Mohamed",
+  "professional_title": [
+    "Artificial Intelligence Engineer",
+    "Artificial Intelligence Instructor"
+  ],
+  "location": "Cairo, Egypt",
+
+  "professional_summary": "Artificial Intelligence Engineer and AI graduate from the Faculty of Computers and Artificial Intelligence at Helwan University. Graduated in 2025 with Excellent with Honors. Currently pursuing postgraduate studies in Artificial Intelligence at Cairo University. Has more than three years of experience teaching Programming and Artificial Intelligence in Arabic and English. Experienced in developing intelligent software solutions using LLMs, RAG, Computer Vision, and NLP.",
+
+  "education": [
+    {
+      "institution": "Cairo University",
+      "faculty": "Faculty of Computers and Artificial Intelligence",
+      "program": "Postgraduate Studies in Artificial Intelligence",
+      "status": "Current"
+    },
+    {
+      "institution": "Helwan University",
+      "faculty": "Faculty of Computers and Artificial Intelligence",
+      "degree": "Bachelor of Computers and Artificial Intelligence",
+      "major": "Artificial Intelligence",
+      "graduation_year": 2025,
+      "grade": "Excellent with Honors",
+      "graduation_project_grade": "A+"
+    }
+  ],
+
+  "selected_projects": [
+    {
+      "name": "Youth Entities AI Chatbot",
+      "organization": "Engineers for Sustainable Egypt",
+      "technologies": [
+        "Python",
+        "FastAPI",
+        "LLaMA",
+        "Retrieval-Augmented Generation",
+        "RAG",
+        "FAISS",
+        "HTML",
+        "CSS",
+        "JavaScript"
+      ],
+      "description": "Developed an AI chatbot providing context-aware answers about organizational projects, activities, and events.",
+      "technical_details": [
+        "Implemented a Retrieval-Augmented Generation architecture",
+        "Used FAISS for semantic vector retrieval",
+        "Integrated LLaMA for response generation",
+        "Retrieved information from organizational documents"
+      ]
+    },
+    {
+      "name": "FITAI",
+      "full_name": "AI-Powered Fitness and Nutrition Platform",
+      "type": "Graduation Project",
+      "grade": "A+",
+      "technologies": [
+        "Python",
+        "React Native",
+        "React",
+        "FastAPI",
+        "Flask",
+        "SQL",
+        "YOLOv8",
+        "MediaPipe",
+        "OpenCV",
+        "Computer Vision",
+        "NLP"
+      ],
+      "description": "An AI-powered fitness and nutrition platform integrating multiple AI models.",
+      "ai_components": [
+        {
+          "name": "AI Fitness Chatbot",
+          "purpose": "Provides personalized fitness guidance"
+        },
+        {
+          "name": "Exercise Form Analysis and Repetition Counter",
+          "technologies": [
+            "MediaPipe",
+            "Computer Vision"
+          ],
+          "purpose": "Analyzes exercise form and counts repetitions"
+        },
+        {
+          "name": "Food Recognition and Calorie Estimation",
+          "technology": "YOLOv8",
+          "purpose": "Recognizes food and estimates calories"
+        }
+      ]
+    }
+  ],
+
+  "educational_content": {
+    "youtube_channel": "Hobast",
+    "content_topics": [
+      "Python Programming",
+      "Artificial Intelligence",
+      "Machine Learning",
+      "Hands-on Coding"
+    ],
+    "ai_learning_platform": {
+      "status": "Under Development",
+      "purpose": "An interactive AI learning ecosystem featuring structured learning paths, practical project labs, and automated coding exercises."
+    }
+  },
+
+  "technical_skills": {
+    "programming_languages": [
+      "Python",
+      "C++",
+      "SQL",
+      "JavaScript"
+    ],
+    "ai_and_machine_learning": [
+      "Machine Learning",
+      "Deep Learning",
+      "Computer Vision",
+      "Natural Language Processing",
+      "NLP",
+      "Large Language Models",
+      "LLMs",
+      "Retrieval-Augmented Generation",
+      "RAG"
+    ],
+    "frameworks_and_libraries": [
+      "TensorFlow",
+      "PyTorch",
+      "Scikit-learn",
+      "OpenCV",
+      "FastAPI",
+      "Flask",
+      "FAISS",
+      "YOLOv8",
+      "MediaPipe"
+    ],
+    "web_and_mobile": [
+      "React",
+      "React Native",
+      "HTML5",
+      "CSS3",
+      "JavaScript"
+    ],
+    "tools": [
+      "Git",
+      "GitHub",
+      "Visual Studio Code",
+      "Jupyter Notebook",
+      "Google Colab"
+    ]
+  },
+
+  "research_interests": [
+    "Artificial Intelligence",
+    "Machine Learning",
+    "Deep Learning",
+    "Computer Vision",
+    "Natural Language Processing",
+    "Large Language Models",
+    "Retrieval-Augmented Generation",
+    "AI in Education",
+    "AI in Healthcare"
+  ],
+
+  "languages": {
+    "Arabic": "Native",
+    "English": "Full Professional Proficiency (C1)",
+    "French": "Elementary Proficiency (A2)"
+  },
+
+  "public_profiles": {
+    "linkedin": "https://www.linkedin.com/in/mohab-rabie-246a1b36b",
+    "github": "https://github.com/Mohab3563",
+    "portfolio": "https://mohab3563.github.io/MYWebApp/"
+  }
+}
