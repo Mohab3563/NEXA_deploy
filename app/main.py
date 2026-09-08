@@ -102,6 +102,13 @@ def get_user_vector_dir(user_id: str):
     os.makedirs(user_dir, exist_ok=True)
     return user_dir
 
+def get_user_upload_dir(user_id: str):
+    """Helper to resolve and create user-specific raw upload directories."""
+    clean_user_id = "".join(c for c in user_id if c.isalnum() or c in ("_", "-")) or "default_user"
+    user_dir = os.path.join(BASE_DIR, "uploaded_files", clean_user_id)
+    os.makedirs(user_dir, exist_ok=True)
+    return user_dir
+
 @app.get("/")
 def read_root():
     return {"message": "Nexa RAG API is live!"}
@@ -127,8 +134,8 @@ async def upload_document(
         await file.seek(0)
 
         # 2. Enforce File Count Limit per User (Max 5 files stored)
-        user_dir = get_user_vector_dir(user_id)
-        existing_items = os.listdir(user_dir)
+        user_upload_dir = get_user_upload_dir(user_id)
+        existing_items = os.listdir(user_upload_dir)
         MAX_FILES_PER_USER = 5
         
         if len(existing_items) >= MAX_FILES_PER_USER:
@@ -137,7 +144,14 @@ async def upload_document(
                 detail=f"Storage limit reached. You can only store up to {MAX_FILES_PER_USER} documents."
             )
 
-        # 3. Process upload targeting the specific user directory
+        # 3. Save raw file inside the user's specific upload folder
+        file_path = os.path.join(user_upload_dir, file.filename)
+        with open(file_path, "wb") as f:
+            f.write(contents)
+        
+        await file.seek(0)
+
+        # 4. Process upload targeting the specific user vector store directory
         res = await process_file_upload(file, user_id=user_id)
         
         return {
@@ -199,7 +213,7 @@ def query_rag(request: QueryRequest):
 
 @app.delete("/cleanup/{user_id}")
 def cleanup_user_data(user_id: str):
-    """Endpoint triggered when the user closes the website to wipe their data."""
+    """Endpoint triggered when the user refreshes or closes the website to wipe their data."""
     clean_user_id = "".join(c for c in user_id if c.isalnum() or c in ("_", "-"))
     if not clean_user_id:
         raise HTTPException(status_code=400, detail="Invalid user ID")
