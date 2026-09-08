@@ -21,6 +21,22 @@ if not os.getenv("GOOGLE_API_KEY"):
 
 app = FastAPI(title="Nexa RAG Backend API")
 
+# Robust path resolution for JSON profiles
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+KNOWLEDGE_DIR = os.path.join(BASE_DIR, "app", "knowledge")
+
+# Fallback path if knowledge directory sits directly in /app
+if not os.path.exists(KNOWLEDGE_DIR):
+    KNOWLEDGE_DIR = os.path.join(BASE_DIR, "knowledge")
+
+# Auto-clear uploaded_files on server startup to remove stale source files
+@app.on_event("startup")
+def clear_uploads_on_startup():
+    upload_dir = os.path.join(BASE_DIR, "uploaded_files")
+    if os.path.exists(upload_dir):
+        shutil.rmtree(upload_dir)
+    os.makedirs(upload_dir, exist_ok=True)
+
 # Configure CORS Middleware for cross-origin requests
 app.add_middleware(
     CORSMiddleware,
@@ -29,14 +45,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-# Robust path resolution for JSON profiles
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-KNOWLEDGE_DIR = os.path.join(BASE_DIR, "app", "knowledge")
-
-# Fallback path if knowledge directory sits directly in /app
-if not os.path.exists(KNOWLEDGE_DIR):
-    KNOWLEDGE_DIR = os.path.join(BASE_DIR, "knowledge")
 
 with open(os.path.join(KNOWLEDGE_DIR, "assistant_profile.json"), "r", encoding="utf-8") as f:
     assistant_profile = json.load(f)
