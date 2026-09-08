@@ -29,13 +29,18 @@ KNOWLEDGE_DIR = os.path.join(BASE_DIR, "app", "knowledge")
 if not os.path.exists(KNOWLEDGE_DIR):
     KNOWLEDGE_DIR = os.path.join(BASE_DIR, "knowledge")
 
-# Auto-clear uploaded_files on server startup to remove stale source files
+# Auto-clear uploaded_files and vector stores on server startup for a pristine environment
 @app.on_event("startup")
-def clear_uploads_on_startup():
+def clear_storage_on_startup():
     upload_dir = os.path.join(BASE_DIR, "uploaded_files")
     if os.path.exists(upload_dir):
         shutil.rmtree(upload_dir)
     os.makedirs(upload_dir, exist_ok=True)
+    
+    vectors_dir = os.path.join(BASE_DIR, "app", "knowledge", "vectors")
+    if os.path.exists(vectors_dir):
+        shutil.rmtree(vectors_dir)
+    os.makedirs(vectors_dir, exist_ok=True)
 
 # Configure CORS Middleware for cross-origin requests
 app.add_middleware(
