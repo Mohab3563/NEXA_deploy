@@ -211,6 +211,7 @@ def query_rag(request: QueryRequest):
         print("-------------------------------\n")
         raise HTTPException(status_code=500, detail=str(e))
 
+@app.post("/cleanup/{user_id}")
 @app.delete("/cleanup/{user_id}")
 def cleanup_user_data(user_id: str):
     """Endpoint triggered when the user refreshes or closes the website to wipe their data."""
